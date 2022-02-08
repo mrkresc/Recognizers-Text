@@ -85,6 +85,14 @@ namespace RecognizerFunction
                 // E.g "After ninety five years of age, perspectives change" will return "95 Year"
                 NumberWithUnitRecognizer.RecognizeAge(query, culture),
 
+                // Age recognizer will find any length presented
+                // E.g "We turn in 1 mile" will return "1 mile"
+                NumberWithUnitRecognizer.RecognizeLength(query, culture),
+
+                // Age recognizer will find any age volume presented
+                // E.g "That bottle is 12 fl oz" will return "12 fl oz"
+                NumberWithUnitRecognizer.RecognizeVolume(query, culture),
+
                 // Currency recognizer will find any currency presented
                 // E.g "Interest expense in the 1988 third quarter was $ 75.3 million" will return "75300000 Dollar"
                 NumberWithUnitRecognizer.RecognizeCurrency(query, culture),

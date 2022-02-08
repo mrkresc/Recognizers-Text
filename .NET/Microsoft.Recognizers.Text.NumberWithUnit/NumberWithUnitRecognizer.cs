@@ -48,6 +48,16 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
             return RecognizeByModel(recognizer => recognizer.GetAgeModel(culture, fallbackToDefaultCulture), query, options);
         }
 
+        public static List<ModelResult> RecognizeLength(string query, string culture, NumberWithUnitOptions options = NumberWithUnitOptions.None, bool fallbackToDefaultCulture = true)
+        {
+            return RecognizeByModel(recognizer => recognizer.GetLengthModel(culture, fallbackToDefaultCulture), query, options);
+        }
+
+        public static List<ModelResult> RecognizeVolume(string query, string culture, NumberWithUnitOptions options = NumberWithUnitOptions.None, bool fallbackToDefaultCulture = true)
+        {
+            return RecognizeByModel(recognizer => recognizer.GetVolumeModel(culture, fallbackToDefaultCulture), query, options);
+        }
+
         public CurrencyModel GetCurrencyModel(string culture = null, bool fallbackToDefaultCulture = true)
         {
             return GetModel<CurrencyModel>(culture, fallbackToDefaultCulture);
@@ -66,6 +76,16 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
         public AgeModel GetAgeModel(string culture = null, bool fallbackToDefaultCulture = true)
         {
             return GetModel<AgeModel>(culture, fallbackToDefaultCulture);
+        }
+
+        public LengthModel GetLengthModel(string culture = null, bool fallbackToDefaultCulture = true)
+        {
+            return GetModel<LengthModel>(culture, fallbackToDefaultCulture);
+        }
+
+        public VolumeModel GetVolumeModel(string culture = null, bool fallbackToDefaultCulture = true)
+        {
+            return GetModel<VolumeModel>(culture, fallbackToDefaultCulture);
         }
 
         protected override void InitializeConfiguration()
@@ -125,6 +145,25 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                         new NumberWithUnitParser(new English.AgeParserConfiguration())
                     },
                 }));
+            RegisterModel<LengthModel>(
+                Culture.Chinese,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.LengthParserConfiguration())
+                    },
+                }));
+
+            RegisterModel<VolumeModel>(
+                Culture.Chinese,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.VolumeParserConfiguration())
+                    },
+                }));
 
             RegisterModel<CurrencyModel>(
                 Culture.Dutch,
@@ -163,6 +202,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     {
                         new NumberWithUnitExtractor(new Dutch.AgeExtractorConfiguration()),
                         new NumberWithUnitParser(new Dutch.AgeParserConfiguration())
+                    },
+                }));
+            RegisterModel<LengthModel>(
+                Culture.Dutch,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Dutch.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new Dutch.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Dutch,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Dutch.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new Dutch.VolumeParserConfiguration())
                     },
                 }));
 
@@ -206,6 +263,25 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     },
                 }));
 
+            RegisterModel<LengthModel>(
+                Culture.English,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.English,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.VolumeParserConfiguration())
+                    },
+                }));
+
             RegisterModel<CurrencyModel>(
                 Culture.French,
                 (options) => new CurrencyModel(new Dictionary<IExtractor, IParser>
@@ -243,6 +319,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     {
                         new NumberWithUnitExtractor(new French.AgeExtractorConfiguration()),
                         new NumberWithUnitParser(new French.AgeParserConfiguration())
+                    },
+                }));
+            RegisterModel<LengthModel>(
+                Culture.French,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new French.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new French.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.French,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new French.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new French.VolumeParserConfiguration())
                     },
                 }));
 
@@ -285,6 +379,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                         new NumberWithUnitParser(new German.AgeParserConfiguration())
                     },
                 }));
+            RegisterModel<LengthModel>(
+                Culture.German,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new German.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new German.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.German,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new German.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new German.VolumeParserConfiguration())
+                    },
+                }));
 
             RegisterModel<AgeModel>(
                 Culture.Hindi,
@@ -293,6 +405,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     {
                         new NumberWithUnitExtractor(new Hindi.AgeExtractorConfiguration()),
                         new NumberWithUnitParser(new Hindi.AgeParserConfiguration())
+                    },
+                }));
+            RegisterModel<LengthModel>(
+                Culture.Hindi,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Hindi.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new Hindi.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Hindi,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Hindi.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new Hindi.VolumeParserConfiguration())
                     },
                 }));
 
@@ -363,6 +493,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     {
                         new NumberWithUnitExtractor(new Italian.AgeExtractorConfiguration()),
                         new NumberWithUnitParser(new Italian.AgeParserConfiguration())
+                    },
+                }));
+            RegisterModel<LengthModel>(
+                Culture.Japanese,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Japanese,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.VolumeParserConfiguration())
                     },
                 }));
 
@@ -463,6 +611,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                         new NumberWithUnitParser(new English.AgeParserConfiguration())
                     },
                 }));
+            RegisterModel<LengthModel>(
+                Culture.Korean,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Korean,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new English.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new English.VolumeParserConfiguration())
+                    },
+                }));
 
             RegisterModel<CurrencyModel>(
                 Culture.Portuguese,
@@ -503,6 +669,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                         new NumberWithUnitParser(new Portuguese.AgeParserConfiguration())
                     },
                 }));
+            RegisterModel<LengthModel>(
+                Culture.Portuguese,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Portuguese.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new Portuguese.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Portuguese,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Portuguese.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new Portuguese.VolumeParserConfiguration())
+                    },
+                }));
 
             RegisterModel<CurrencyModel>(
                 Culture.Spanish,
@@ -543,7 +727,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                         new NumberWithUnitParser(new Spanish.AgeParserConfiguration())
                     },
                 }));
-
+            RegisterModel<LengthModel>(
+                Culture.Spanish,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Spanish.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new Spanish.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Spanish,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Spanish.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new Spanish.VolumeParserConfiguration())
+                    },
+                }));
             RegisterModel<CurrencyModel>(
                 Culture.SpanishMexican,
                 (options) => new CurrencyModel(new Dictionary<IExtractor, IParser>
@@ -581,6 +782,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     {
                         new NumberWithUnitExtractor(new Spanish.AgeExtractorConfiguration()),
                         new NumberWithUnitParser(new Spanish.AgeParserConfiguration())
+                    },
+                }));
+            RegisterModel<LengthModel>(
+                Culture.SpanishMexican,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Spanish.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new Spanish.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.SpanishMexican,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Spanish.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new Spanish.VolumeParserConfiguration())
                     },
                 }));
 
@@ -591,6 +810,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     {
                         new NumberWithUnitExtractor(new Swedish.AgeExtractorConfiguration()),
                         new NumberWithUnitParser(new Swedish.AgeParserConfiguration())
+                    },
+                }));
+            RegisterModel<LengthModel>(
+                Culture.Swedish,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Swedish.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new Swedish.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Swedish,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Swedish.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new Swedish.VolumeParserConfiguration())
                     },
                 }));
 
@@ -631,6 +868,24 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit
                     {
                         new NumberWithUnitExtractor(new Turkish.AgeExtractorConfiguration()),
                         new NumberWithUnitParser(new Turkish.AgeParserConfiguration())
+                    },
+                }));
+            RegisterModel<LengthModel>(
+                Culture.Turkish,
+                (options) => new LengthModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Turkish.LengthExtractorConfiguration()),
+                        new NumberWithUnitParser(new Turkish.LengthParserConfiguration())
+                    },
+                }));
+            RegisterModel<VolumeModel>(
+                Culture.Turkish,
+                (options) => new VolumeModel(new Dictionary<IExtractor, IParser>
+                {
+                    {
+                        new NumberWithUnitExtractor(new Turkish.VolumeExtractorConfiguration()),
+                        new NumberWithUnitParser(new Turkish.VolumeParserConfiguration())
                     },
                 }));
 
